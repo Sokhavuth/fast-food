@@ -1,0 +1,77 @@
+<!--views/frontend/home.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/home.css" />
+<script src="/scripts/paginate.js"></script>
+
+<% if(data.items){ %>
+<div class="feature">
+    <%- include("./carousel") %>
+</div>
+<% } %>
+
+<div class="front-ad">
+    <img src="/images/donate-ad.jpg" />
+    <img src="/images/donate-ad.jpg" />
+</div>
+
+<% if(data.items){ %>
+<div class="post-list">
+    <div class="article">
+        <% for(let index=0; index<data.items.length; index++){ %>
+        <% if(index<15){ %>
+        <div class="mobile">
+        <a class="thumb" href="/post/<%= data.items[index].key %>">
+            <img src="<%= data.items[index].thumb %>" />
+            <% if(data.items[index].videos){ %>
+                <% if(data.items[index].videos !== ""){ %>
+                    <% if(data.items[index].videos !== "[]"){ %>
+                        <img class="play-icon" src="/images/play.png" />
+                    <% } %>
+                <% } %>
+            <% } %>
+        </a>
+        <div class="content">
+            <a class="title" href="/post/<%= data.items[index].key %>">
+                <%= data.items[index].title %>
+            </a>
+            <div class="text-content"><%- data.items[index].content %></div>
+        </div>
+        </div>
+        <% }else{ %>
+            <a class="thumb" href="/post/<%= data.items[index].key %>">
+                <img src="<%= data.items[index].thumb %>" />
+                <% if(data.items[index].videos){ %>
+                    <% if(data.items[index].videos !== ""){ %>
+                        <% if(data.items[index].videos !== "[]"){ %>
+                            <img class="play-icon" src="/images/play.png" />
+                        <% } %>
+                    <% } %>
+    
+                <% } %>
+            </a>
+            <div class="content">
+                <a class="title" href="/post/<%= data.items[index].key %>">
+                    <%= data.items[index].title %>
+                </a>
+                <div class="text-content"><%- data.items[index].content %></div>
+            </div>
+        <% } %>
+        <% } %>
+    </div>
+    
+    <div class="sidebar"><%- include("./sidebar") %></div>
+</div>
+<% } %>
+
+<div class="pagination">
+    <p>
+        <% if(data.count - data.fpostLimit === 1){ %>
+            1 more post
+        <% }else if(data.count - data.fpostLimit <= 0){ %>
+            no more post
+        <% }else{ %>
+            <%= data.count - data.fpostLimit %> more posts
+        <% } %>
+    </p>
+    <img class="load" onclick="paginate()" src="/images/loadmore.png" />
+</div>
