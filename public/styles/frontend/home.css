@@ -49,6 +49,10 @@
     height: auto;
 }
 
+.post-list .article .content .date{
+    font-size: 12px;
+}
+
 .post-list .article .content .title{
     font: 16px/1.5 Oswald, Koulen;
     white-space: nowrap;
