@@ -12,6 +12,7 @@ class Home{
         const { posts, length } = await postdb.getPosts(req, setup.fpostLimit)
         setup.items = posts
         setup.count = length
+
         setup.page = 1
 
         res.render("base", { data: setup })

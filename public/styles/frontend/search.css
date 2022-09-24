@@ -8,7 +8,7 @@
 }
 
 .Search .main .content{
-    border-right: 1px solid var(--background-light);
+    border-right: 1px solid var(--background);
     padding-right: 20px;
 }
 
@@ -18,7 +18,7 @@
     grid-gap: 10px;
     align-items: center;
     margin-bottom: 10px;
-    background-color: var(--background-light);
+    background-color: var(--body);
 }
 
 .Search ul li:last-child{

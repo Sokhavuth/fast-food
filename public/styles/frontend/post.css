@@ -8,7 +8,7 @@
 }
 
 .Post .main .content{
-    border-right: 1px solid var(--background-light);
+    border-right: 1px solid var(--background);
     padding-right: 20px;
 }
 

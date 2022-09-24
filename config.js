@@ -2,7 +2,7 @@
 // npm install deta
 
 async function setup(){
-    const setting = await db.setting.get("l8cduam4")
+    const setting = await db.setting.get("l8e9igvq")
     const settings = {
         siteTitle: setting.siteTitle,
         description: setting.description,
@@ -27,7 +27,7 @@ const db = {}
 const deta = Deta(process.env.PROJECT_KEY)
 db.users = deta.Base("the_morning_news_users")
 db.session = deta.Base("the_morning_news_session")
-db.posts = deta.Base("the_morning_news_posts")
+db.posts = deta.Base("the_morning_news_food")
 db.pages = deta.Base("the_morning_news_pages")
 db.categories = deta.Base("the_morning_news_categories")
 db.setting = deta.Base("the_morning_news_setting")

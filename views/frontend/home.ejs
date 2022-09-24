@@ -10,15 +10,15 @@
 <% } %>
 
 <div class="front-ad">
-    <img src="/images/donate-ad.jpg" />
-    <img src="/images/donate-ad.jpg" />
+    <img src="/images/front-ad.png" />
+    <img src="/images/front-ad.png" />
 </div>
 
 <% if(data.items){ %>
 <div class="post-list">
     <div class="article">
-        <% for(let index=0; index<data.items.length; index++){ %>
-        <% if(index<15){ %>
+        <% for(let index=2; index<data.items.length; index++){ %>
+        <% if(index<17){ %>
         <div class="mobile">
         <a class="thumb" href="/post/<%= data.items[index].key %>">
             <img src="<%= data.items[index].thumb %>" />
@@ -31,13 +31,14 @@
             <% } %>
         </a>
         <div class="content">
+            <div class="date"><%= new Date(data.items[index].date).toLocaleDateString("it-IT") %></div>
             <a class="title" href="/post/<%= data.items[index].key %>">
                 <%= data.items[index].title %>
             </a>
-            <div class="text-content"><%- data.items[index].content %></div>
         </div>
         </div>
         <% }else{ %>
+            <div class="post">
             <a class="thumb" href="/post/<%= data.items[index].key %>">
                 <img src="<%= data.items[index].thumb %>" />
                 <% if(data.items[index].videos){ %>
@@ -50,16 +51,15 @@
                 <% } %>
             </a>
             <div class="content">
+                <div class="date"><%= new Date(data.items[index].date).toLocaleDateString("it-IT") %></div>
                 <a class="title" href="/post/<%= data.items[index].key %>">
                     <%= data.items[index].title %>
                 </a>
-                <div class="text-content"><%- data.items[index].content %></div>
+            </div>
             </div>
         <% } %>
         <% } %>
     </div>
-    
-    <div class="sidebar"><%- include("./sidebar") %></div>
 </div>
 <% } %>
 

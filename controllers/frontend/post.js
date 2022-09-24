@@ -9,6 +9,8 @@ class Post{
         setup.pageTitle = "Post page"
         setup.route = "/post"
 
+        const { posts } = await postdb.getPosts(req, 2)
+        setup.items = posts
         setup.item = await postdb.getPost(req)
 
         res.render("base", { data: setup })

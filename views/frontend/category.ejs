@@ -6,7 +6,7 @@
 <section class="Category">
     <% if(data.items){ %>
     <div class="inner region">
-            <% for(let item of data.items){ %>  
+            <% for(let item of data.posts){ %>  
                 <a href="/post/<%= item.key %>">
                     <img class="thumb" src="<%= item.thumb %>" />
                     <% if(item.videos){ %>

@@ -2,16 +2,9 @@
 
 
 class Post{
-    async getAllItems(req){
-        const category = req.params.category
-        if(category){
-            var query = {"categories?contains": category}
-        }else{
-            var query = {}
-        }
+    async getAllItems(req, query={}){
         let result = await req.mydb.posts.fetch(query)
         let allItems = result.items
-
         while(result.last){
             result = await req.mydb.posts.fetch(query, {last: result.last})
             allItems = allItems.concat(result.items)
@@ -42,8 +35,8 @@ class Post{
         await req.mydb.posts.put(new_post)
     }
 
-    async getPosts(req, amount){
-        const allItems = await this.getAllItems(req)
+    async getPosts(req, amount, query={}){
+        const allItems = await this.getAllItems(req, query)
         allItems.sort((a, b) => {     
             let da = new Date(a.date)
             let db = new Date(b.date)

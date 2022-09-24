@@ -1,6 +1,7 @@
 // controllers/frontend/search.js
 
 const searchdb = require("../../models/search")
+const postdb = require("../../models/post")
 
 
 class Search{
@@ -12,6 +13,8 @@ class Search{
 
         req.body.search_type = "posts"
 
+        const { posts } = await postdb.getPosts(req, 2)
+        setup.items = posts
         setup.searchResult = await searchdb.searchItems(req, 12)
 
         res.render("base", { data: setup })

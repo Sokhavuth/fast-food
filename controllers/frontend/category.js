@@ -10,8 +10,11 @@ class Category{
         setup.route = "/category"
         setup.type = req.params.category
 
-        const { posts, length } = await postdb.getPosts(req, setup.categoryItemLimit)
-        setup.items = posts
+        const postObj = await postdb.getPosts(req, 2)
+        setup.items = postObj.posts
+        const query = {"categories?contains": setup.type}
+        const { posts, length } = await postdb.getPosts(req, setup.categoryItemLimit, query)
+        setup.posts = posts
         setup.count = length
         setup.page = 1
         
