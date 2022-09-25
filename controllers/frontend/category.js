@@ -23,7 +23,10 @@ class Category{
 
     async paginate(req, res){
         const setup = await req.mysetup()
-        const { posts, length } = await postdb.paginate(req, setup.categoryItemLimit)
+        setup.type = req.params.category
+
+        const query = {"categories?contains": setup.type}
+        const { posts, length } = await postdb.paginate(req, setup.categoryItemLimit, query)
         setup.count = length
         setup.items = posts
         setup.page = parseInt(req.body.page) + 1

@@ -16,22 +16,24 @@ function appendItem(items, data){
     
     if(items){
         for(let index=0; index<items.length; index++){
+            html += `<div class="post">`
             html += `<a class="thumb" href="/post/${data.items[index].key}">`
             html += `<img src="${data.items[index].thumb}" />`
-            if(data.items[index].videos){ 
-                if(data.items[index].videos !== ""){ 
-                    if(data.items[index].videos !== "[]"){ 
+            if(data.items[index].videos){
+                if(data.items[index].videos !== ""){
+                    if(data.items[index].videos !== "[]"){
                         html += `<img class="play-icon" src="/images/play.png" />`
                     }
                 }
-
+    
             }
             html += `</a>`
             html += `<div class="content">`
+            html += `<div class="date">${new Date(data.items[index].date).toLocaleDateString("it-IT")}</div>`
             html += `<a class="title" href="/post/${data.items[index].key}">`
-                html += data.items[index].title
+            html += data.items[index].title
             html += `</a>`
-            html += `<div class="text-content">${data.items[index].content}</div>`
+            html += `</div>`
             html += `</div>`
         } 
     }
